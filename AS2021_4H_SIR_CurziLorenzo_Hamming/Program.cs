@@ -141,6 +141,12 @@ namespace AS2021_4H_SIR_CurziLorenzo_Hamming
                 return "1".Pastel("00FF00");
         }
 
+        /// <summary>
+        /// Metodo che verificare la parità dei bit in ricezione a seconda del bit di parità
+        /// </summary>
+        /// <param name="sequenza">sequenza ricevuta</param>
+        /// <param name="posizioneParita">parità da verificare</param>
+        /// <returns>numero di bit 1 presenti</returns>
         static int CalcolaParitaRicezione(List<string> sequenza, int posizioneParita)
         {
             int contatore = 0;
