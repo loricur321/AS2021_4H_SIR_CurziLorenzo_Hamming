@@ -194,7 +194,10 @@ namespace AS2021_4H_SIR_CurziLorenzo_Hamming
 
                         //in caso il numero di uno sia dispari significa che vi è stato un errore nella parità
                         if (bitUnoPresenti % 2 != 0)
+                        {
                             sindromeErrore += p + 1; //perciò mi salvo il numero della parità 
+                            break;
+                        }
                         else
                             break;
                     }
