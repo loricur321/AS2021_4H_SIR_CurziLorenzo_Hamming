@@ -1,5 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using AS2021_4H_SIR_CurziLorenzo_Hamming;
+using AS2021_4H_SIR_CurziLorenzo_Hamming.Models;
 
 namespace AS2021_4H_SIR_CurziLorenzo_HammingTest
 {
@@ -44,7 +44,7 @@ namespace AS2021_4H_SIR_CurziLorenzo_HammingTest
 
             CodiceHamming hamming = new CodiceHamming();
 
-            //invio un codice di Hamming con un errore nella posizione 2
+            //invio un codice di Hamming con un errore
             string risultato = hamming.Ricezione("0111100011");
             string risultatoAtteso = "0101100011"; //codice di Hamming atteso che il metodo dovrebbe correggere
 
