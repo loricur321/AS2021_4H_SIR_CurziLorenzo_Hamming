@@ -1,11 +1,11 @@
-﻿using Pastel;
+﻿//using Pastel;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace AS2021_4H_SIR_CurziLorenzo_Hamming
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -17,7 +17,7 @@ namespace AS2021_4H_SIR_CurziLorenzo_Hamming
 
             string bitRicevuti = Richiestadati("Inserire la sequenza di bit ricevuta: (solo 0 e 1)");
 
-            Console.WriteLine(Ricezione(bitRicevuti));
+            Console.WriteLine($"La parola ricevuta corretta è: {Ricezione(bitRicevuti)}");
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace AS2021_4H_SIR_CurziLorenzo_Hamming
                 if (!flag)
                     return input;
                 else
-                    Console.WriteLine("Inserimento errato! La sequenza di bit deve essere composta solo da 0 e 1.".Pastel("FF0000"));
+                    Console.WriteLine("Inserimento errato! La sequenza di bit deve essere composta solo da 0 e 1.");
             }
         }
 
@@ -50,7 +50,7 @@ namespace AS2021_4H_SIR_CurziLorenzo_Hamming
         /// </summary>
         /// <param name="bit">sequenza di bit su cui calcolare la parità</param>
         /// <returns>sequenza di bit con bit di parità</returns>
-        static string Hamming(string bit)
+        public static string Hamming(string bit)
         {
             List<string> sequenza = ImpostaPosizioniParita(bit);
 
@@ -136,9 +136,9 @@ namespace AS2021_4H_SIR_CurziLorenzo_Hamming
             }
 
             if (contatore % 2 == 0)
-                return "0".Pastel("00FF00");
+                return "0";
             else
-                return "1".Pastel("00FF00");
+                return "1";
         }
 
         /// <summary>
@@ -175,7 +175,7 @@ namespace AS2021_4H_SIR_CurziLorenzo_Hamming
         /// </summary>
         /// <param name="bitRicevuti">parola ricevuta</param>
         /// <returns></returns>
-        static string Ricezione(string bitRicevuti)
+        public static string Ricezione(string bitRicevuti)
         {
             List<string> sequenzaRicevuta = new List<string>();
 
@@ -217,17 +217,14 @@ namespace AS2021_4H_SIR_CurziLorenzo_Hamming
                 sindromeErrore += 1; //aggiungo 1 in quanto partendo da -1 se non lo facessi invertirei il bit sbagliato
 
                 if (sequenzaRicevuta[sindromeErrore - 1] == "0")
-                    sequenzaRicevuta[sindromeErrore - 1] = "1".Pastel("FFFF00");
+                    sequenzaRicevuta[sindromeErrore - 1] = "1";
                 else
-                    sequenzaRicevuta[sindromeErrore - 1] = "0".Pastel("FFFF00");
+                    sequenzaRicevuta[sindromeErrore - 1] = "0";
 
-                sb.AppendLine($"Vi era un errore nella posizione: {sindromeErrore}".Pastel("FF0000"));
-                sb.AppendLine($"La sequenza di bit corretta è: \n");
-                foreach (string s in sequenzaRicevuta)
-                    sb.Append(s);
             }
-            else
-                sb.AppendLine("Non vi è stato alcun errore nella ricezione!".Pastel("00FF00"));
+
+            foreach (string s in sequenzaRicevuta)
+                sb.Append(s);
 
             return sb.ToString();
         }

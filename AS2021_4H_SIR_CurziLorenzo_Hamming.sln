@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31129.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AS2021_4H_SIR_CurziLorenzo_Hamming", "AS2021_4H_SIR_CurziLorenzo_Hamming\AS2021_4H_SIR_CurziLorenzo_Hamming.csproj", "{0955ABE8-6E13-4085-B54B-B45EF1CB242A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AS2021_4H_SIR_CurziLorenzo_Hamming", "AS2021_4H_SIR_CurziLorenzo_Hamming\AS2021_4H_SIR_CurziLorenzo_Hamming.csproj", "{0955ABE8-6E13-4085-B54B-B45EF1CB242A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AS2021_4H_SIR_CurziLorenzo_HammingTest", "AS2021_4H_SIR_CurziLorenzo_HammingTest\AS2021_4H_SIR_CurziLorenzo_HammingTest.csproj", "{DBE7F307-95D0-4A25-9DA3-5DB2DB766D43}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{0955ABE8-6E13-4085-B54B-B45EF1CB242A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0955ABE8-6E13-4085-B54B-B45EF1CB242A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0955ABE8-6E13-4085-B54B-B45EF1CB242A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBE7F307-95D0-4A25-9DA3-5DB2DB766D43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBE7F307-95D0-4A25-9DA3-5DB2DB766D43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBE7F307-95D0-4A25-9DA3-5DB2DB766D43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBE7F307-95D0-4A25-9DA3-5DB2DB766D43}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
