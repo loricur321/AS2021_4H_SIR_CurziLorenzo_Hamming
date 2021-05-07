@@ -9,15 +9,17 @@ namespace AS2021_4H_SIR_CurziLorenzo_Hamming
     {
         static void Main(string[] args)
         {
+            CodiceHamming hamming = new CodiceHamming();
+
             Console.WriteLine("Codice di Hamming di Lorenzo curzi 4H, 23/04/2021");
 
             string bit = Richiestadati("Inserire la sequenza di bit (solo 0 e 1): ");
 
-            Console.WriteLine($"Codifica di Hamming della parola in ingresso: {Hamming(bit)}");
+            Console.WriteLine($"Codifica di Hamming della parola in ingresso: {hamming.CalcolaCodiceHamming(bit)}");
 
             string bitRicevuti = Richiestadati("Inserire la sequenza di bit ricevuta: (solo 0 e 1)");
 
-            Console.WriteLine($"La parola ricevuta corretta è: {Ricezione(bitRicevuti)}");
+            Console.WriteLine($"La parola ricevuta corretta è: {hamming.Ricezione(bitRicevuti)}");
         }
 
         /// <summary>
@@ -44,13 +46,16 @@ namespace AS2021_4H_SIR_CurziLorenzo_Hamming
                     Console.WriteLine("Inserimento errato! La sequenza di bit deve essere composta solo da 0 e 1.");
             }
         }
+    }
 
+    public class CodiceHamming
+    {
         /// <summary>
         /// Metodo in cui è possibile calcolare la parità secondo il codice di Hamming
         /// </summary>
         /// <param name="bit">sequenza di bit su cui calcolare la parità</param>
         /// <returns>sequenza di bit con bit di parità</returns>
-        public static string Hamming(string bit)
+        public string CalcolaCodiceHamming(string bit)
         {
             List<string> sequenza = ImpostaPosizioniParita(bit);
 
@@ -61,10 +66,10 @@ namespace AS2021_4H_SIR_CurziLorenzo_Hamming
             for (int i = 0; i < bit.Length; i++)
                 posizioniParita.Add(Convert.ToInt32(Math.Pow(2, i)) - 1);
 
-            for(int i = 0; i < sequenza.Count; i++)
+            for (int i = 0; i < sequenza.Count; i++)
             {
-                foreach(int p in posizioniParita)
-                    if(p == i)
+                foreach (int p in posizioniParita)
+                    if (p == i)
                     {
                         sequenza[i] = CalcolaParita(sequenza, p);
                         break;
@@ -84,7 +89,7 @@ namespace AS2021_4H_SIR_CurziLorenzo_Hamming
         /// </summary>
         /// <param name="bit">sequenza di bit</param>
         /// <returns>sequenza di bit con parità segnate da "_"</returns>
-        static List<string> ImpostaPosizioniParita(string bit)
+        List<string> ImpostaPosizioniParita(string bit)
         {
             List<string> sequenza = new List<string>();
 
@@ -115,12 +120,12 @@ namespace AS2021_4H_SIR_CurziLorenzo_Hamming
         /// </summary>
         /// <param name="sequenza">sequenza di bit</param>
         /// <returns>0 se i bit sono pari, 1 se i bit sono dispari</returns>
-        static string CalcolaParita(List<string> sequenza, int posizioneParita)
+        string CalcolaParita(List<string> sequenza, int posizioneParita)
         {
             int contatore = 0;
 
             //parto dalla posizione del bit di parità e controllo le posizioni a seconda di esso
-            for(int i = posizioneParita; i < sequenza.Count; i = i + posizioneParita + 1)
+            for (int i = posizioneParita; i < sequenza.Count; i = i + posizioneParita + 1)
             {
                 int j = 0;
                 //utilizzo un do while per poter saltare ai bit successivi al bit di partenza
@@ -147,7 +152,7 @@ namespace AS2021_4H_SIR_CurziLorenzo_Hamming
         /// <param name="sequenza">sequenza ricevuta</param>
         /// <param name="posizioneParita">parità da verificare</param>
         /// <returns>numero di bit 1 presenti</returns>
-        static int CalcolaParitaRicezione(List<string> sequenza, int posizioneParita)
+        int CalcolaParitaRicezione(List<string> sequenza, int posizioneParita)
         {
             int contatore = 0;
 
@@ -175,7 +180,7 @@ namespace AS2021_4H_SIR_CurziLorenzo_Hamming
         /// </summary>
         /// <param name="bitRicevuti">parola ricevuta</param>
         /// <returns></returns>
-        public static string Ricezione(string bitRicevuti)
+        public string Ricezione(string bitRicevuti)
         {
             List<string> sequenzaRicevuta = new List<string>();
 
@@ -191,10 +196,10 @@ namespace AS2021_4H_SIR_CurziLorenzo_Hamming
 
             int sindromeErrore = -1; //in caso di errore nella ricezione viene aggiunta in questa variabile il valore della parità errato in modo da individuare la posizone errata
 
-            for(int i = 0; i < sequenzaRicevuta.Count; i++)
+            for (int i = 0; i < sequenzaRicevuta.Count; i++)
             {
-                foreach(var p in posizioniParita)
-                    if(i == p)
+                foreach (var p in posizioniParita)
+                    if (i == p)
                     {
                         int bitUnoPresenti = CalcolaParitaRicezione(sequenzaRicevuta, p);
 
